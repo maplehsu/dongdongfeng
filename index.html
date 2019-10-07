@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Love Q</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+
+<body>
+    <audio src="./music.mp3" autoplay="true" loop="loop"></audio>
+    <div id="back">
+        <div class="mask"></div>
+        <!-- 设置展示的图片，github pages不能有后台程序只能一条一条手动添加了 囧 -->
+        <div id="carousel"  class="carousel slide carousel-fade carousel-position">
+            <div class="carousel-inner" style="width: 100%;height: 100%;" id="background">
+                <div class="item active" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background:url(./img/1.jpg);background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/2.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/3.jpg) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/4.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/5.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/6.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/7.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/8.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/9.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/10.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/11.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/12.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/13.JPG) ;background-size: cover;"></div>
+                </div>
+                <div class="item" style="width: 100%;height: 100%;">
+                    <div style="width: 100%;height: 100%;background-image: url(./img/1.JPG) ;background-size: cover;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal show" style="top:24%;">
+        <div class="modal-dialog" style="opacity: .9">
+            <div class="modal-content" style="opacity:.85">
+                <div class="modal-header">
+                    <h1 class="text-center" style="color: #A94442;font-family: 'JournalRegular', Arial, sans-serif;font-size: 7rem;">Happy Valentine's Day.</h1>
+                    <p class="text-center small-title">Q & Maple</p>
+                    <p class="text-center small-title">LOVING ON THE WAY</p>
+                </div>
+                <div class="modal-body text-center" style="line-height: 1.5rem;font-family: 'JournalRegular', Arial, sans-serif;font-size: 3rem;">
+                    <p>
+                        <span id="day" class="time-font"></span><span style="color:#A94442">/&nbsp;</span>
+                        <span id="hour" class="time-font"></span><span style="color:#A94442">/&nbsp;</span>
+                        <span id="minute" class="time-font"></span><span style="color:#A94442">/&nbsp;</span>
+                        <span id="second" class="time-font"></span>
+                    </p>
+                    <p>
+                        days/hours/min/sec
+                    </p>
+                    <p class="text-center" style="color:#A94442;font-size: 17px; line-height: 1.5;" id="say"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/jquery-1.12.2.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/count-time.js"></script>
+    <script>
+    $(function() {
+        //设置起始日期
+        countTime('2018/9/9 0:00', 'day', 'hour', 'minute', 'second');
+        var days = $('#day').text();
+
+        // 设置标题
+        if (parseInt(days / 365) != 0) {
+            $(document).attr("title", "在一起" + parseInt(days / 365) + "年,感谢相伴。");
+        } else if (parseInt(days / 30) != 0) {
+            $(document).attr("title", "在一起" + parseInt(days / 30) + "个月,感谢相伴。");
+        } else
+            $(document).attr("title", "在一起" + days + "天,感谢相伴。");
+
+        //设置每一张图片对应的文字
+        var says = new Array(
+            "亲爱的，短暂的5个月,感谢有你",
+            "不敢相信，我们才在一起5个月，和你在一起的感觉是那么熟悉，感觉那么自然",
+            "走过很多路，却发现给你拍的照片那么少，以后我要留下每一个你的美丽瞬间",
+            "之前发生了很多不愉快，谢谢给我机会弥补",
+            "亲爱的，真正了解你以后，我发现自己已经是爱上了你",
+            "我不在乎你以前发生过什么，做过什么，我只是知道，你在我这里是独一无二的存在",
+            "我喜欢你的漂亮，更喜欢你的善良,你总说善良的人很多，但是像你这样的却很少",
+            "亲爱的，也希望能原谅我以前说了很多伤害你的话",
+            "我这个人，大男子主义，爱唠叨，还希望以后多多包容",
+            "我可能不是最好的，但是我想成为能让你感受到幸福的那个人",
+            "虽然错过了很多事情，唯一不在想错过的就是你了",
+            "虽然不相信命中注定，但是想和你在一起的心不想在改变了",
+            "亲爱的情人节快乐，我想和你说，以后的喜怒哀乐我们一起分享",
+            "时间不停，爱你不止，携子之手，白头偕老"
+        );
+
+        var start = function() {
+            var index = 0;
+            var rate = 6000;
+            $('#say').text(says[(index++) % says.length]);
+         	var _play = function () {
+         		$('#say').hide();
+                $('#say').text(says[(index++) % says.length]);
+                $('#say').fadeToggle();
+                $('#carousel').carousel('next');
+         	};
+            setInterval(_play, rate);
+        }();
+
+    });
+    </script>
+</body>
+
+</html>
